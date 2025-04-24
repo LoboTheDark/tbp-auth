@@ -22,3 +22,5 @@ logging:
     root: INFO
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+jwt:
+  secret: VkdTUnliUjlkaFI5WXJPY3BYa2FabjZWT0tsTUhGc1FnQ2RXV3gxWW1aT0lsUTJibGRIa2psTndqQ3h2N3Z0dg== # base64 encoded (mind. 256 byte)

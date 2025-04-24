@@ -1,4 +1,4 @@
-package com.tbp.tbp_auth.dto;
+package com.tbp.tbp_auth.dto.responses;
 
 import com.tbp.tbp_auth.datamodel.dao.AuthProvider;
 import java.util.UUID;
