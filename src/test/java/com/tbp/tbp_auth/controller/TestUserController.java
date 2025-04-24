@@ -2,8 +2,8 @@ package com.tbp.tbp_auth.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tbp.tbp_auth.datamodel.dao.AuthProvider;
-import com.tbp.tbp_auth.dto.RegisterUserRequest;
-import com.tbp.tbp_auth.dto.UserResponseDto;
+import com.tbp.tbp_auth.dto.requests.RegisterUserRequest;
+import com.tbp.tbp_auth.dto.responses.UserResponseDto;
 import com.tbp.tbp_auth.exception.UserAlreadyExistsException;
 import com.tbp.tbp_auth.service.UserService;
 import org.junit.jupiter.api.Test;

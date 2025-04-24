@@ -1,12 +1,9 @@
 package com.tbp.tbp_auth.service;
 
-import com.tbp.tbp_auth.datamodel.dao.AuthProvider;
 import com.tbp.tbp_auth.datamodel.dao.User;
-import com.tbp.tbp_auth.dto.RegisterUserRequest;
+import com.tbp.tbp_auth.dto.requests.RegisterUserRequest;
 import com.tbp.tbp_auth.exception.UserAlreadyExistsException;
 import com.tbp.tbp_auth.repository.UserRepository;
-import lombok.extern.java.Log;
-import org.h2.engine.Role;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

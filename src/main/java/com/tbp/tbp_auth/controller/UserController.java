@@ -1,12 +1,10 @@
 package com.tbp.tbp_auth.controller;
 
-import com.tbp.tbp_auth.datamodel.dao.User;
-import com.tbp.tbp_auth.dto.RegisterUserRequest;
-import com.tbp.tbp_auth.dto.UserResponseDto;
+import com.tbp.tbp_auth.dto.requests.RegisterUserRequest;
+import com.tbp.tbp_auth.dto.responses.UserResponseDto;
 import com.tbp.tbp_auth.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

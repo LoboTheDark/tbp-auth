@@ -1,4 +1,4 @@
-package com.tbp.tbp_auth.dto;
+package com.tbp.tbp_auth.dto.requests;
 
 public record RegisterUserRequest(
         String username,
