@@ -1,6 +1,6 @@
 # 🛡️ TBP Auth Service
 
-The `tbp-auth` service is a dedicated authentication and authorization microservice for the TBP (The Battle Project) platform. It handles user login, registration, and token issuance using both traditional username/password credentials and external SSO providers (Google, Steam, etc.).
+The `tbp-auth` service is a dedicated authentication and authorization microservice for the TBP (To be Played) platform. It handles user login, registration, and token issuance using both traditional username/password credentials and external SSO providers (Google, Steam, etc.).
 
 ---
 
