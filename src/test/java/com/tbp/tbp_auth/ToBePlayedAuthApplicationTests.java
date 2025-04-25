@@ -1,9 +1,11 @@
 package com.tbp.tbp_auth;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.test.context.ActiveProfiles;
+
 import static org.springframework.test.util.AssertionErrors.assertTrue;
 
-
+@ActiveProfiles("test")
 class ToBePlayedAuthApplicationTests {
 
 	@Test
