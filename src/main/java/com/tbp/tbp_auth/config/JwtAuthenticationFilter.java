@@ -1,6 +1,7 @@
 package com.tbp.tbp_auth.config;
 
 import com.tbp.tbp_auth.service.JwtService;
+import io.jsonwebtoken.JwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -39,7 +40,15 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
 
         final String token = authHeader.substring(7);
-        final String username = jwtService.extractUsername(token);
+        String username = null;
+        try {
+            username = jwtService.extractUsername(token);
+
+        } catch (JwtException | IllegalArgumentException e) {
+            // Set to 401 and break the filter chain
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
+        }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
