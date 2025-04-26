@@ -6,8 +6,8 @@ import org.springframework.test.context.ActiveProfiles;
 
 import static org.springframework.test.util.AssertionErrors.assertTrue;
 
-@ActiveProfiles("test")
 @SpringBootTest
+@ActiveProfiles("test")
 class ToBePlayedAuthApplicationTests {
 
 	@Test
