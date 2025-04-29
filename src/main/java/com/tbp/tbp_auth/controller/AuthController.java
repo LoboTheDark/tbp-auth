@@ -6,6 +6,7 @@ import com.tbp.tbp_auth.dto.responses.JwtResponseDto;
 import com.tbp.tbp_auth.dto.responses.UserResponseDto;
 import com.tbp.tbp_auth.repository.UserRepository;
 import com.tbp.tbp_auth.service.AuthService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -19,6 +20,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auth")
+@Slf4j
 public class AuthController {
 
     private final AuthService authService;
