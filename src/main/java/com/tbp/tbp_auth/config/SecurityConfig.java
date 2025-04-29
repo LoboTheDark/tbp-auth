@@ -24,8 +24,6 @@ public class SecurityConfig {
         this.jwtService = jwtService;
         this.userDetailsService = userDetailsService;
     }
-
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -35,17 +33,16 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         JwtAuthenticationFilter jwtFilter = new JwtAuthenticationFilter(jwtService, userDetailsService);
 
-        http
-                .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> auth
-                        // Open for all. so everyone should be able to register
-                        .requestMatchers("/api/auth/users/register").permitAll()
-                        // also to visit the login
-                        .requestMatchers("/api/auth/login").permitAll()
-                        // everything lese needs a bearer
-                        .anyRequest().authenticated()
+        http.csrf(AbstractHttpConfigurer::disable)
+            .authorizeHttpRequests(auth -> auth
+                // Open for all. so everyone should be able to register
+                .requestMatchers("/api/auth/users/register").permitAll()
+                // also to visit the login
+                .requestMatchers("/api/auth/login").permitAll()
+                // everything lese needs a bearer
+                .anyRequest().authenticated()
 
-                ).addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+            ).addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
