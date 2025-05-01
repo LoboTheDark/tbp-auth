@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.tbp</groupId>
 	<artifactId>tbp-auth</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>toBePlayed Auth</name>
 	<description>Auth service for the toBePlayed application</description>
 	<url/>
