@@ -22,6 +22,10 @@ public class User {
     private String email;
 
     @Getter @Setter
+    @Column(nullable = false, columnDefinition = "varchar(255) default ''")
+    private String steamId;
+
+    @Getter @Setter
     @Column(nullable = false)
     private String passwordHash;
 

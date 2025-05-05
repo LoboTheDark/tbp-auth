@@ -51,6 +51,7 @@ public class AuthController {
                 user.getUsername(),
                 user.getEmail(),
                 user.getRole(),
+                user.getSteamId(),
                 user.getProvider()
         ));
     }

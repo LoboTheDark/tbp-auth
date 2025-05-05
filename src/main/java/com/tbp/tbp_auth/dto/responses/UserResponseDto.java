@@ -8,5 +8,7 @@ public record UserResponseDto(
         String username,
         String email,
         String role,
+        String steamId,
         AuthProvider provider
+
 ) {}

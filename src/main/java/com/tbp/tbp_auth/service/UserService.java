@@ -32,6 +32,7 @@ public class UserService {
                 savedUser.getUsername(),
                 savedUser.getEmail(),
                 savedUser.getRole(),
+                savedUser.getSteamId(),
                 savedUser.getProvider()
         );
     }
@@ -43,6 +44,7 @@ public class UserService {
         user.setEmail(request.email());
         user.setPasswordHash(passwordEncoder.encode(request.password()));
         user.setProvider(AuthProvider.LOCAL);
+        user.setSteamId(request.steamId());
         user.setRole("USER");
         return user;
     }

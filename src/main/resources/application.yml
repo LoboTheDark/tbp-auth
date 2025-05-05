@@ -13,6 +13,20 @@ spring:
       ddl-auto: update
     show-sql: true
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 923662873925-hph6aaipac3q6v02nrpuduq5or50s657.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+              - openid
+              - profile
+              - email # Die Scopes, die Sie von Google anfordern
+        provider:
+          google:
+            issuer-uri: https://accounts.google.com # Standard für Google
 logging:
   level:
     root: INFO
