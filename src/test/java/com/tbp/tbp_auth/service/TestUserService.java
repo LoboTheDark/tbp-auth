@@ -39,7 +39,7 @@ class TestUserService {
     @Test
     void shouldCreateUserSuccessfully() {
         // Given
-        RegisterUserRequest request = new RegisterUserRequest("newUser", "user@example.com", "password123");
+        RegisterUserRequest request = new RegisterUserRequest("newUser", "user@example.com", "password123", "0123456789");
 
         when(userRepository.findByEmail(request.email())).thenReturn(Optional.empty());
         when(userRepository.findByUsername(request.username())).thenReturn(Optional.empty());
@@ -60,7 +60,7 @@ class TestUserService {
     @Test
     void shouldThrowExceptionWhenEmailExists() {
         // Given
-        RegisterUserRequest request = new RegisterUserRequest("newUser", "existing@example.com", "password123");
+        RegisterUserRequest request = new RegisterUserRequest("newUser", "existing@example.com", "password123", "0123456789");
         when(userRepository.findByEmail(request.email()))
                 .thenReturn(Optional.of(mock(User.class)));
 
@@ -72,7 +72,7 @@ class TestUserService {
     @Test
     void shouldThrowExceptionWhenUsernameExists() {
         // Given
-        RegisterUserRequest request = new RegisterUserRequest("existingUser", "user@example.com", "password123");
+        RegisterUserRequest request = new RegisterUserRequest("existingUser", "user@example.com", "password123", "0123456789");
         when(userRepository.findByEmail(request.email())).thenReturn(Optional.empty());
         when(userRepository.findByUsername(request.username()))
                 .thenReturn(Optional.of(mock(User.class)));
