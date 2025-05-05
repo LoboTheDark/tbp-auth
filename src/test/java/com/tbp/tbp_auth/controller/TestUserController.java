@@ -44,8 +44,8 @@ class TestUserController {
     @WithMockUser
     void shouldRegisterUserSuccessfully() throws Exception {
         // Given
-        RegisterUserRequest request = new RegisterUserRequest("newUser", "user@example.com", "securePass");
-        UserResponseDto user = new UserResponseDto(UUID.randomUUID(), "newUser", "user@example.com", "USER", AuthProvider.LOCAL);
+        RegisterUserRequest request = new RegisterUserRequest("newUser", "user@example.com", "securePass", "0123456789");
+        UserResponseDto user = new UserResponseDto(UUID.randomUUID(), "newUser", "user@example.com", "USER", "0123456789", AuthProvider.LOCAL);
 
         when(userService.createUser(any(RegisterUserRequest.class))).thenReturn(user);
 
@@ -56,14 +56,15 @@ class TestUserController {
                         .with(csrf()))  // Add CSRF token for the request
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.username").value("newUser"))
-                .andExpect(jsonPath("$.email").value("user@example.com"));
+                .andExpect(jsonPath("$.email").value("user@example.com"))
+                .andExpect(jsonPath("$.steamId").value("0123456789"));
     }
 
     @Test
     @WithMockUser
     void shouldReturnConflictWhenEmailExists() throws Exception {
         // Given
-        RegisterUserRequest request = new RegisterUserRequest("newUser", "existing@example.com", "pass");
+        RegisterUserRequest request = new RegisterUserRequest("newUser", "existing@example.com", "pass", "0123456789");
 
         when(userService.createUser(any(RegisterUserRequest.class)))
                 .thenThrow(new UserAlreadyExistsException("Username already in use"));

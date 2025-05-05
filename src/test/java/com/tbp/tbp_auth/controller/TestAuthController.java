@@ -41,6 +41,7 @@ class TestAuthController {
         user.setEmail(username + "@example.com");
         user.setPasswordHash("passwort");
         user.setRole("USER");
+        user.setSteamId("0123456789");
 
         userRepository.save(user);
     }
