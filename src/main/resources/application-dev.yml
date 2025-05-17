@@ -7,3 +7,5 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+backend:
+  syncSteamApiUrl: http://localhost:8081/api/games/loadGameList
