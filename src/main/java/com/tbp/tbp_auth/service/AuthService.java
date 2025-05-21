@@ -1,6 +1,7 @@
 package com.tbp.tbp_auth.service;
 
 import com.tbp.tbp_auth.dto.requests.LoginRequest;
+import com.tbp.tbp_auth.dto.responses.JwtResponseDto;
 import com.tbp.tbp_auth.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,20 +19,24 @@ public class AuthService {
         this.userRepository = userRepository;
     }
 
-    public String authenticateAndGenerateToken(LoginRequest request) {
+    public JwtResponseDto authenticateAndGenerateToken(LoginRequest request) {
         var user = userRepository.findByUsername(request.username());
         if(user.isPresent())
         {
-            return jwtService.generateToken(user.get().getUsername());
+            var token = jwtService.generateToken(user.get().getUsername());
+            return new JwtResponseDto(token, user.get().getSteamId());
         }
 
         user = userRepository.findByEmail(request.username());
         if(user.isPresent())
         {
-            return jwtService.generateToken(user.get().getUsername());
+            var token = jwtService.generateToken(user.get().getUsername());
+            return new JwtResponseDto(token, user.get().getSteamId());
         }
 
         throw new UsernameNotFoundException("User not found");
 
     }
+
+
 }
