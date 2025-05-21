@@ -33,8 +33,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<JwtResponseDto> login(@RequestBody LoginRequest request) {
-        String token = authService.authenticateAndGenerateToken(request);
-        return ResponseEntity.ok(new JwtResponseDto(token));
+        return ResponseEntity.ok(authService.authenticateAndGenerateToken(request));
     }
 
     @GetMapping("/me")
