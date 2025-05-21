@@ -44,8 +44,8 @@ class TestUserController {
     @WithMockUser
     void shouldRegisterUserSuccessfully() throws Exception {
         // Given
-        RegisterUserRequest request = new RegisterUserRequest("newUser", "user@example.com", "securePass", "0123456789");
-        UserResponseDto user = new UserResponseDto(UUID.randomUUID(), "newUser", "user@example.com", "USER", "0123456789", AuthProvider.LOCAL);
+        RegisterUserRequest request = new RegisterUserRequest("newUser", "user@example.com", "securePass", "");
+        UserResponseDto user = new UserResponseDto(UUID.randomUUID(), "newUser", "user@example.com", "USER", "", AuthProvider.LOCAL);
 
         when(userService.createUser(any(RegisterUserRequest.class))).thenReturn(user);
 
@@ -57,7 +57,7 @@ class TestUserController {
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.username").value("newUser"))
                 .andExpect(jsonPath("$.email").value("user@example.com"))
-                .andExpect(jsonPath("$.steamId").value("0123456789"));
+                .andExpect(jsonPath("$.steamId").value(""));
     }
 
     @Test

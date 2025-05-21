@@ -9,3 +9,5 @@ spring:
       ddl-auto: create-drop
     database-platform: org.hibernate.dialect.H2Dialect
     show-sql: false
+backend:
+  syncSteamApiUrl: http://192.168.86.49:31002/api/games/loadGameList

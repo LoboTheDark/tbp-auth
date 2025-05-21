@@ -6,6 +6,7 @@ import com.tbp.tbp_auth.dto.requests.RegisterUserRequest;
 import com.tbp.tbp_auth.dto.responses.UserResponseDto;
 import com.tbp.tbp_auth.exception.UserAlreadyExistsException;
 import com.tbp.tbp_auth.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ import java.time.Duration;
 import java.util.UUID;
 
 @Service
+@Slf4j
 public class UserService {
 
     private final UserRepository userRepository;
@@ -50,6 +52,10 @@ public class UserService {
 
     private void callBackendToSync(String steamId) {
 
+        if(steamId == null || steamId.isBlank())
+        {
+            return;
+        }
 
         try (var client = HttpClient.newHttpClient()) {
             var request = HttpRequest.newBuilder()
